@@ -1,0 +1,19 @@
+.DS_Store
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Xcode
+DerivedData/
+*.xcodeproj
+*.xcworkspace
+*.xcuserstate
+xcuserdata/
+
+# Playgrounds & SwiftUI previews
+timeline.xctimeline
+playground.xcworkspace
+
+# Logs
+*.log
