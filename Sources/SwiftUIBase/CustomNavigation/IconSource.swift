@@ -1,5 +1,13 @@
+//
+//  IconSource.swift
+//  SwiftUIBase
+//
+//  Created by Aland on 12/5/26.
+//
+
 import SwiftUI
 
+/// Describes where an icon image should be loaded from.
 public enum IconSource: Equatable {
     case system(String)
     case asset(String, bundle: Bundle? = nil)
@@ -15,4 +23,5 @@ extension IconSource {
         }
     }
 }
+
 

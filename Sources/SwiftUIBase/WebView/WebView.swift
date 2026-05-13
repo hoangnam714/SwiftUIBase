@@ -1,11 +1,18 @@
 import SwiftUI
 import WebKit
 
+/// A SwiftUI wrapper around `WKWebView` with loading and progress bindings.
 public struct WebView: View {
     public let url: URL
     @Binding public var isLoading: Bool
     @Binding public var progress: Double
 
+    /// Creates a web view wrapper.
+    ///
+    /// - Parameters:
+    ///   - url: URL to load.
+    ///   - isLoading: Binding updated while page is loading.
+    ///   - progress: Binding updated with estimated loading progress (`0...1`).
     public init(url: URL, isLoading: Binding<Bool>, progress: Binding<Double>) {
         self.url = url
         self._isLoading = isLoading
@@ -16,6 +23,7 @@ public struct WebView: View {
         Representable(url: url, isLoading: $isLoading, progress: $progress)
     }
 
+    /// `WKNavigationDelegate` coordinator for loading state and progress observation.
     public final class Coordinator: NSObject, WKNavigationDelegate {
         private var progressObservation: NSKeyValueObservation?
         @Binding private var isLoading: Bool

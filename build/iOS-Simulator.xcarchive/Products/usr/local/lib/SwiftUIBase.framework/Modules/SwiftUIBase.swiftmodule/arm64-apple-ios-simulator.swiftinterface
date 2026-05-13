@@ -1,0 +1,216 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.3.1 (swiftlang-6.3.1.1.2 clang-2100.0.123.102)
+// swift-module-flags: -target arm64-apple-ios15.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 6 -O -enable-experimental-feature DebugDescriptionMacro -module-name SwiftUIBase -package-name swiftuibase
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.3.1
+import Foundation
+import StoreKit
+import Swift
+import SwiftUI
+import SwiftyStoreKit
+import WebKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import _WebKit_SwiftUI
+@_Concurrency.MainActor @preconcurrency public struct BackButtonView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let icon: SwiftUIBase.IconSource
+  @_Concurrency.MainActor @preconcurrency public var buttonSize: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var iconSize: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var iconTint: SwiftUICore.Color
+  @_Concurrency.MainActor @preconcurrency public let onTap: () -> Swift.Void
+  @_Concurrency.MainActor @preconcurrency public init(systemName: Swift.String = "chevron.left", buttonSize: CoreFoundation.CGFloat = 36, iconSize: CoreFoundation.CGFloat = 18, iconTint: SwiftUICore.Color = .primary, onTap: @escaping () -> Swift.Void = {})
+  @_Concurrency.MainActor @preconcurrency public init(icon: SwiftUIBase.IconSource, buttonSize: CoreFoundation.CGFloat = 36, iconSize: CoreFoundation.CGFloat = 18, iconTint: SwiftUICore.Color = .primary, onTap: @escaping () -> Swift.Void = {})
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SwiftUIBase14BackButtonViewV4bodyQrvp", 0) __
+}
+public enum CustomNavStyle {
+  case leading, center, trailing
+  public static func == (a: SwiftUIBase.CustomNavStyle, b: SwiftUIBase.CustomNavStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct AnyNavButton : Swift.Identifiable {
+  public let id: Foundation.UUID
+  public let style: SwiftUIBase.CustomNavStyle
+  public let action: (() -> Swift.Void)?
+  public let label: SwiftUICore.AnyView
+  public init(style: SwiftUIBase.CustomNavStyle, action: (() -> Swift.Void)?, label: SwiftUICore.AnyView)
+  public typealias ID = Foundation.UUID
+}
+public protocol NavButtonConvertible {
+  func erase() -> SwiftUIBase.AnyNavButton
+}
+public struct CustomNavigationButtonView<Label> : SwiftUIBase.NavButtonConvertible where Label : SwiftUICore.View {
+  public let style: SwiftUIBase.CustomNavStyle
+  public let action: (() -> Swift.Void)?
+  public let labelBuilder: () -> Label
+  public init(style: SwiftUIBase.CustomNavStyle, action: (() -> Swift.Void)? = nil, @SwiftUICore.ViewBuilder label: @escaping () -> Label)
+  public func erase() -> SwiftUIBase.AnyNavButton
+}
+@_functionBuilder public enum CustomNavBuilder {
+  public static func buildBlock(_ components: [SwiftUIBase.AnyNavButton]...) -> [SwiftUIBase.AnyNavButton]
+  public static func buildExpression(_ expr: any SwiftUIBase.NavButtonConvertible) -> [SwiftUIBase.AnyNavButton]
+  public static func buildExpression(_ expr: [any SwiftUIBase.NavButtonConvertible]) -> [SwiftUIBase.AnyNavButton]
+  public static func buildExpression(_ expr: [SwiftUIBase.AnyNavButton]) -> [SwiftUIBase.AnyNavButton]
+  public static func buildOptional(_ component: [SwiftUIBase.AnyNavButton]?) -> [SwiftUIBase.AnyNavButton]
+  public static func buildEither(first component: [SwiftUIBase.AnyNavButton]) -> [SwiftUIBase.AnyNavButton]
+  public static func buildEither(second component: [SwiftUIBase.AnyNavButton]) -> [SwiftUIBase.AnyNavButton]
+  public static func buildArray(_ components: [[SwiftUIBase.AnyNavButton]]) -> [SwiftUIBase.AnyNavButton]
+  public static func buildFinalResult(_ component: [SwiftUIBase.AnyNavButton]) -> [SwiftUIBase.AnyNavButton]
+}
+@_Concurrency.MainActor @preconcurrency public struct CustomNavigationBar : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var isTransparent: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public init(isTransparent: Swift.Bool = false, @SwiftUIBase.CustomNavBuilder nav: () -> [SwiftUIBase.AnyNavButton])
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SwiftUIBase19CustomNavigationBarV4bodyQrvp", 0) __
+}
+public enum IconSource : Swift.Equatable {
+  case system(Swift.String)
+  case asset(Swift.String, bundle: Foundation.Bundle? = nil)
+  public static func == (a: SwiftUIBase.IconSource, b: SwiftUIBase.IconSource) -> Swift.Bool
+}
+extension Swift.Int {
+  public func abbreviateNumber() -> Swift.String
+  public func viewCountText() -> Swift.String
+}
+extension Swift.String {
+  public func formatDateISO8601() -> Swift.String
+  public func relativeUpdatedAt(locale: Foundation.Locale = .current, referenceDate: Foundation.Date = Date()) -> Swift.String
+  public func formattedDate_ddMMyyyy() -> Swift.String
+  public func toDate(inputFormat: Swift.String, locale: Foundation.Locale = Locale(identifier: "en_US_POSIX"), timeZone: Foundation.TimeZone = .current) -> Foundation.Date?
+  public func convertDateFormat(from inputFormat: Swift.String, to outputFormat: Swift.String, locale: Foundation.Locale = Locale(identifier: "en_US_POSIX"), inputTimeZone: Foundation.TimeZone = .current, outputTimeZone: Foundation.TimeZone = .current) -> Swift.String
+  public func formatDateFromISO8601(to outputFormat: Swift.String = "dd/MM/yyyy") -> Swift.String
+  public func formatDate(from inputFormat: Swift.String, to outputFormat: Swift.String = "dd/MM/yyyy", locale: Foundation.Locale = Locale(identifier: "en_US_POSIX")) -> Swift.String
+}
+public typealias ProductIdentifier = Swift.String
+public typealias ProductsRequestCompletion = (Swift.Result<[StoreKit.SKProduct], any Swift.Error>) -> Swift.Void
+public typealias PurchaseCompletion = (Swift.Result<StoreKit.SKProduct?, any Swift.Error>) -> Swift.Void
+public typealias RestoreCompletion = (Swift.Result<[Swift.String], any Swift.Error>) -> Swift.Void
+public typealias IntCompletion = (Swift.Result<Swift.Int, any Swift.Error>) -> Swift.Void
+public enum IAPError : Swift.Error, Foundation.LocalizedError {
+  case nothingToRestore
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public static func == (a: SwiftUIBase.IAPError, b: SwiftUIBase.IAPError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum IAPPurchaseError : Swift.Error, Foundation.LocalizedError {
+  case unknown, clientInvalid, paymentCancelled, paymentInvalid, paymentNotAllowed
+  case storeProductNotAvailable, cloudServicePermissionDenied
+  case cloudServiceNetworkConnectionFailed, cloudServiceRevoked, deferred
+  case other(any Swift.Error)
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public static func from(_ error: any Swift.Error) -> SwiftUIBase.IAPPurchaseError
+}
+@_hasMissingDesignatedInitializers @_Concurrency.MainActor final public class InappHelper {
+  @_Concurrency.MainActor public static let shared: SwiftUIBase.InappHelper
+  public struct IAPProduct : Swift.Equatable, Swift.Hashable {
+    public let id: SwiftUIBase.ProductIdentifier
+    public let displayNameKey: Swift.String
+    public init(id: SwiftUIBase.ProductIdentifier, displayNameKey: Swift.String)
+    public static func == (a: SwiftUIBase.InappHelper.IAPProduct, b: SwiftUIBase.InappHelper.IAPProduct) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor final public var products: [SwiftUIBase.InappHelper.IAPProduct]
+  @_Concurrency.MainActor final public var sharedSecret: Swift.String
+  @_Concurrency.MainActor final public func requestProducts(completion: @escaping SwiftUIBase.ProductsRequestCompletion)
+  @_Concurrency.MainActor final public func makePackageDescriptions(from products: [StoreKit.SKProduct]) -> (packages: [SwiftUIBase.PackageDescription], productsByID: [Swift.String : StoreKit.SKProduct])
+  @_Concurrency.MainActor final public func purchase(productId: Swift.String, completion: @escaping SwiftUIBase.PurchaseCompletion)
+  @_Concurrency.MainActor final public func finishPendingTransactions(completion: SwiftUIBase.IntCompletion? = nil)
+  @_Concurrency.MainActor final public func restorePurchasedProducts(completion: @escaping SwiftUIBase.RestoreCompletion)
+  @objc deinit
+}
+public struct PackageDescription : Swift.Identifiable, Swift.Equatable {
+  public var id: Swift.String {
+    get
+  }
+  public var productID: Swift.String
+  public var name: Swift.String
+  public var type: SwiftUIBase.InappHelper.IAPProduct
+  public var price: Swift.String
+  public var subtitle: Swift.String
+  public var newSubtitle: Swift.String
+  public var numberOfUnits: Swift.Int?
+  public static func == (a: SwiftUIBase.PackageDescription, b: SwiftUIBase.PackageDescription) -> Swift.Bool
+  public typealias ID = Swift.String
+}
+@_Concurrency.MainActor @preconcurrency public struct TagView<Item, Content> : SwiftUICore.View where Content : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var hSpacing: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var vSpacing: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var lineLimit: Swift.Int?
+  @_Concurrency.MainActor @preconcurrency public var items: [Item]
+  @_Concurrency.MainActor @preconcurrency public let contentBuilder: (Item) -> Content
+  @_Concurrency.MainActor @preconcurrency public init(items: [Item], hSpacing: CoreFoundation.CGFloat = 8, vSpacing: CoreFoundation.CGFloat = 8, lineLimit: Swift.Int? = nil, @SwiftUICore.ViewBuilder contentBuilder: @escaping (Item) -> Content)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SwiftUIBase7TagViewV4bodyQrvp", 0) __<Item, Content>
+}
+@_Concurrency.MainActor @preconcurrency public struct WebContentView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(title: Swift.String, urlString: Swift.String, loadingColor: SwiftUICore.Color = .accentColor, loadingTrackColor: SwiftUICore.Color = Color.secondary.opacity(0.15), progressHeight: CoreFoundation.CGFloat = 3, progressAnimationDuration: Swift.Double = 0.2, onBack: (() -> Swift.Void)? = nil)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SwiftUIBase14WebContentViewV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor @preconcurrency public struct WebView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let url: Foundation.URL
+  @SwiftUICore.Binding @_projectedValueProperty($isLoading) @_Concurrency.MainActor @preconcurrency public var isLoading: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  @_Concurrency.MainActor @preconcurrency public var $isLoading: SwiftUICore.Binding<Swift.Bool> {
+    get
+  }
+  @SwiftUICore.Binding @_projectedValueProperty($progress) @_Concurrency.MainActor @preconcurrency public var progress: Swift.Double {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  @_Concurrency.MainActor @preconcurrency public var $progress: SwiftUICore.Binding<Swift.Double> {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public init(url: Foundation.URL, isLoading: SwiftUICore.Binding<Swift.Bool>, progress: SwiftUICore.Binding<Swift.Double>)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor @preconcurrency final public class Coordinator : ObjectiveC.NSObject, WebKit.WKNavigationDelegate {
+    @_Concurrency.MainActor @preconcurrency @objc final public func webView(_ webView: WebKit.WKWebView, didStartProvisionalNavigation navigation: WebKit.WKNavigation!)
+    @_Concurrency.MainActor @preconcurrency @objc final public func webView(_ webView: WebKit.WKWebView, didFinish navigation: WebKit.WKNavigation!)
+    @_Concurrency.MainActor @preconcurrency @objc final public func webView(_ webView: WebKit.WKWebView, didFail navigation: WebKit.WKNavigation!, withError error: any Swift.Error)
+    @_Concurrency.MainActor @preconcurrency @objc final public func webView(_ webView: WebKit.WKWebView, didFailProvisionalNavigation navigation: WebKit.WKNavigation!, withError error: any Swift.Error)
+    @objc deinit
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s11SwiftUIBase7WebViewV4bodyQrvp", 0) __
+}
+extension SwiftUIBase.BackButtonView : Swift.Sendable {}
+extension SwiftUIBase.CustomNavStyle : Swift.Equatable {}
+extension SwiftUIBase.CustomNavStyle : Swift.Hashable {}
+extension SwiftUIBase.CustomNavigationBar : Swift.Sendable {}
+extension SwiftUIBase.IAPError : Swift.Equatable {}
+extension SwiftUIBase.IAPError : Swift.Hashable {}
+extension SwiftUIBase.InappHelper : Swift.Sendable {}
+extension SwiftUIBase.TagView : Swift.Sendable {}
+extension SwiftUIBase.WebContentView : Swift.Sendable {}
+extension SwiftUIBase.WebView : Swift.Sendable {}
+extension SwiftUIBase.WebView.Coordinator : Swift.Sendable {}

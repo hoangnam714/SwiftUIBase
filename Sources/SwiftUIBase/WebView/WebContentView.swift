@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// A ready-to-use web content screen with custom navigation bar and loading progress.
 public struct WebContentView: View {
     private let title: String
     private let urlString: String
@@ -13,6 +14,16 @@ public struct WebContentView: View {
     @State private var progress: Double = 0.0
     @Environment(\.dismiss) private var dismiss
 
+    /// Creates a web content screen.
+    ///
+    /// - Parameters:
+    ///   - title: Center title displayed in the top bar.
+    ///   - urlString: URL string to load.
+    ///   - loadingColor: Foreground loading bar color.
+    ///   - loadingTrackColor: Background loading bar color.
+    ///   - progressHeight: Height of loading bar.
+    ///   - progressAnimationDuration: Progress bar animation duration.
+    ///   - onBack: Optional custom back action. Uses environment dismiss when `nil`.
     public init(
         title: String,
         urlString: String,

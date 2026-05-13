@@ -1,5 +1,9 @@
 import SwiftUI
 
+/// A flexible wrapping tag container that lays out items across multiple lines.
+///
+/// `TagView` measures each tag's intrinsic size, computes wrapped frames based on
+/// available width, and supports optional line limiting.
 // MARK: - Generic TagView that accepts any Item type
 public struct TagView<Item, Content: View>: View {
     public var hSpacing: CGFloat
@@ -13,6 +17,14 @@ public struct TagView<Item, Content: View>: View {
     @State private var frames: [Int: CGRect] = [:]
     @State private var totalHeight: CGFloat = .zero
 
+    /// Creates a wrapping tag view.
+    ///
+    /// - Parameters:
+    ///   - items: Source data items rendered as tags.
+    ///   - hSpacing: Horizontal spacing between tags.
+    ///   - vSpacing: Vertical spacing between wrapped lines.
+    ///   - lineLimit: Maximum number of lines to display. `nil` shows all lines.
+    ///   - contentBuilder: Builder that renders each `Item`.
     public init(
         items: [Item],
         hSpacing: CGFloat = 8,

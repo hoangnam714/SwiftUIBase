@@ -25,6 +25,32 @@ Then import in your file:
 import SwiftUIBase
 ```
 
+## Build as Framework (XCFramework)
+
+If you want to distribute this library as a framework instead of integrating via SPM:
+
+1. Build XCFramework:
+
+```bash
+./scripts/build_xcframework.sh
+```
+
+2. Output artifact:
+
+```bash
+build/SwiftUIBase.xcframework
+```
+
+Optional (for module-stable distribution):
+
+```bash
+BUILD_FOR_DISTRIBUTION=YES ./scripts/build_xcframework.sh
+```
+
+3. Integrate into your app:
+- Drag `SwiftUIBase.xcframework` into your Xcode project
+- Ensure **Embed & Sign** is set for app targets that use it
+
 ## Components
 
 ### `BackButtonView`

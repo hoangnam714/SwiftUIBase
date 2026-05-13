@@ -1,13 +1,23 @@
+//
+//  File.swift
+//  SwiftUIBase
+//
+//  Created by Aland on 12/5/26.
+//
+
 import SwiftUI
 
+/// Position style for items inside `CustomNavigationBar`.
 public enum CustomNavStyle { case leading, center, trailing }
 
+/// Type-erased navigation bar item model.
 public struct AnyNavButton: Identifiable {
     public let id = UUID()
     public let style: CustomNavStyle
     public let action: (() -> Void)?
     public let label: AnyView
 
+    /// Creates a type-erased navigation button descriptor.
     public init(style: CustomNavStyle, action: (() -> Void)?, label: AnyView) {
         self.style = style
         self.action = action
@@ -15,15 +25,23 @@ public struct AnyNavButton: Identifiable {
     }
 }
 
+/// Converts typed nav button declarations into `AnyNavButton`.
 public protocol NavButtonConvertible {
     func erase() -> AnyNavButton
 }
 
+/// A typed navigation item that can be placed in leading, center, or trailing positions.
 public struct CustomNavigationButtonView<Label: View>: NavButtonConvertible {
     public let style: CustomNavStyle
     public let action: (() -> Void)?
     public let labelBuilder: () -> Label
 
+    /// Creates a custom navigation bar item.
+    ///
+    /// - Parameters:
+    ///   - style: Placement in the navigation bar.
+    ///   - action: Optional tap action. When `nil`, item is not tappable.
+    ///   - label: View builder for item content.
     public init(
         style: CustomNavStyle,
         action: (() -> Void)? = nil,
@@ -40,6 +58,7 @@ public struct CustomNavigationButtonView<Label: View>: NavButtonConvertible {
 }
 
 @resultBuilder
+/// Result builder used to declare navigation bar items declaratively.
 public enum CustomNavBuilder {
     public static func buildBlock(_ components: [AnyNavButton]...) -> [AnyNavButton] { components.flatMap { $0 } }
     public static func buildExpression(_ expr: any NavButtonConvertible) -> [AnyNavButton] { [expr.erase()] }
@@ -52,10 +71,16 @@ public enum CustomNavBuilder {
     public static func buildFinalResult(_ component: [AnyNavButton]) -> [AnyNavButton] { component }
 }
 
+/// A customizable navigation bar that supports leading, center, and trailing items.
 public struct CustomNavigationBar: View {
     private let buttons: [AnyNavButton]
     public var isTransparent: Bool
 
+    /// Creates a customizable navigation bar.
+    ///
+    /// - Parameters:
+    ///   - isTransparent: Whether the background is transparent.
+    ///   - nav: Builder that provides navigation items.
     public init(
         isTransparent: Bool = false,
         @CustomNavBuilder nav: () -> [AnyNavButton]
