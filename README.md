@@ -15,7 +15,7 @@ Or add it in `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/your-org/SwiftUIBase.git", from: "1.0.0")
+    .package(url: "https://github.com/hoangnam714/SwiftUIBase.git", from: "1.0.0")
 ]
 ```
 
