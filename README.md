@@ -4,7 +4,7 @@ Reusable SwiftUI base components for iOS and macOS.
 
 ## Requirements
 
-- Swift 6
+- Swift 6.0+
 - iOS 15+ / macOS 12+
 
 ## Installation (Swift Package Manager)
