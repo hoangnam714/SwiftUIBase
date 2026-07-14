@@ -11,7 +11,6 @@ let package = Package(
     products: [
         .library(
             name: "SwiftUIBase",
-            type: .dynamic,
             targets: ["SwiftUIBase"]
         ),
     ],
